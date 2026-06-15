@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Pelayanan Kapal & Manajemen Materi</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid :fa-ship text-3xl text-blue-400"></i>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">PORT-SYS PROTOTYPE</h1>
+                    <p class="text-xs text-blue-200">Sistem Informasi Pelayanan & Manajemen Materi Kepelabuhanan</p>
+                </div>
+            </div>
+            <nav class="flex gap-2">
+                <button onclick="switchModule('materi')" id="btn-materi" class="nav-btn bg-blue-700 px-4 py-2 rounded-lg font-medium transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-book"></i> Modul Materi KTI
+                </button>
+                <button onclick="switchModule('simulasi')" id="btn-simulasi" class="nav-btn hover:bg-blue-800 px-4 py-2 rounded-lg font-medium transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-laptop-code"></i> Simulasi Sistem Pelabuhan
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6 max-w-7xl">
+        
+        <section id="module-materi" class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div class="lg:col-span-1 bg-white p-4 rounded-xl shadow-sm border border-slate-200 h-fit sticky top-24">
+                <h3 class="font-bold text-lg text-blue-900 mb-4 border-b pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ol"></i> Daftar Isi Materi
+                </h3>
+                <ul class="space-y-1 text-sm font-medium text-slate-600">
+                    <li><button onclick="scrollToSection('bab1')" class="w-full text-left p-2 rounded hover:bg-slate-100 hover:text-blue-700 transition">BAB I PENDAHULUAN</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec11')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">1.1 Identifikasi Masalah</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec12')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">1.2 Permasalahan</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec13')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">1.3 Dampak Tanpa Sistem</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec14')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">1.4 Tujuan & Manfaat</button></li>
+                    
+                    <li class="pt-2"><button onclick="scrollToSection('bab2')" class="w-full text-left p-2 rounded hover:bg-slate-100 hover:text-blue-700 transition">BAB II PEMBAHASAN</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec21')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">2.1 Identifikasi Pengguna</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec22')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">2.2 Gambaran Rancangan</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec23')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">2.3 Platform Google Sites</button></li>
+                    
+                    <li class="pt-2"><button onclick="scrollToSection('bab3')" class="w-full text-left p-2 rounded hover:bg-slate-100 hover:text-blue-700 transition">BAB III PENUTUP</button></li>
+                    <li class="pl-4"><button onclick="scrollToSection('sec31')" class="w-full text-left p-1 text-xs rounded hover:text-blue-700">3.1 Kesimpulan</button></li>
+                </ul>
+                <div class="mt-6 pt-4 border-t border-slate-100">
+                    <button onclick="openEditorModal()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Materi Web
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 space-y-12" id="content-viewer">
+                <div id="section-bab1" class="prose max-w-none">
+                    <h2 class="text-2xl font-extrabold text-blue-900 border-b-2 border-blue-100 pb-2 mb-4">BAB I: PENDAHULUAN</h2>
+                    
+                    <h3 id="section-sec11" class="text-xl font-bold text-slate-800 mt-6 mb-2">1.1 Identifikasi Masalah</h3>
+                    <p id="txt-identifikasi" class="text-slate-600 leading-relaxed text-justify mb-4">Pelayanan kapal di pelabuhan besar saat ini umumnya sudah mulai beralih menggunakan sistem digital terintegrasi (seperti Inapornet) yang menghubungkan berbagai instansi. Namun, pada implementasinya, sistem ini sering kali belum sepenuhnya otomatis. Pengguna jasa (agen kapal) masih harus mengunggah dokumen secara digital, yang kemudian diverifikasi secara manual satu per satu oleh petugas instansi terkait...</p>
+                    
+                    <h3 id="section-sec12" class="text-xl font-bold text-slate-800 mt-6 mb-2">1.2 Permasalahan Yang Terjadi</h3>
+                    <div id="txt-permasalahan" class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg text-slate-700 space-y-2 mb-4">
+                        <p><strong>Redundansi Data:</strong> Memasukkan data berulang pada sistem silo antar-lembaga.</p>
+                        <p><strong>Kurangnya Transparansi:</strong> Status pelacakan dokumen operasional belum real-time.</p>
+                        <p><strong>Keterbatasan SDM:</strong> Terjadi ketimpangan keahlian operator komputer di lapangan.</p>
+                    </div>
+
+                    <h3 id="section-sec13" class="text-xl font-bold text-slate-800 mt-6 mb-2">1.3 Dampak Jika Tidak Ada Sistem</h3>
+                    <p id="txt-dampak" class="text-slate-600 leading-relaxed text-justify mb-4">Tanpa adanya sistem informasi yang terintegrasi, risiko terjadinya kesalahan data sangat tinggi. Human error seperti kekeliruan menghitung biaya labuh dan tambat, salah mencatat manifes, hingga tumpang tindihnya jadwal sandar kapal di satu dermaga akan terus berulang karena validasi data dilakukan secara manual.</p>
+
+                    <h3 id="section-sec14" class="text-xl font-bold text-slate-800 mt-6 mb-2">1.4 Tujuan Dan Manfaat Sistem</h3>
+                    <p id="txt-tujuan" class="text-slate-600 leading-relaxed text-justify">Tujuan utama dari pengembangan sistem ini adalah membangun ekosistem kepelabuhanan yang terintegrasi, transparan, dan efisien demi mengoptimalkan waktu tinggal kapal (Turnaround Time) di pelabuhan.</p>
+                </div>
+
+                <div id="section-bab2" class="prose max-w-none pt-6 border-t border-slate-100">
+                    <h2 class="text-2xl font-extrabold text-blue-900 border-b-2 border-blue-100 pb-2 mb-4">BAB II: PEMBAHASAN</h2>
+                    
+                    <h3 id="section-sec21" class="text-xl font-bold text-slate-800 mt-6 mb-2">2.1 Identifikasi Pengguna Sistem</h3>
+                    <p id="txt-pengguna" class="text-slate-600 leading-relaxed text-justify mb-4">Sistem ini membagi hak akses ke dalam beberapa peran penting untuk menjamin keamanan operasional pelabuhan: Pengguna Jasa (Agen Kapal), Petugas/Regulator Pemerintah (Otoritas Pelabuhan & Syahbandar), Operator Terminal (PBM), Manajemen Eksekutif, dan Admin Sistem.</p>
+
+                    <h3 id="section-sec22" class="text-xl font-bold text-slate-800 mt-6 mb-2">2.2 Gambaran Rancangan Alur Kerja</h3>
+                    <p class="text-slate-600 text-sm mb-4">Berikut adalah alur logika pemrosesan pengajuan kliring kapal masuk hingga keluar pelabuhan:</p>
+                    <div class="bg-slate-900 text-emerald-400 p-4 rounded-lg font-mono text-xs overflow-x-auto shadow-inner leading-relaxed">
+                        [Mulai] -&gt; Input Data PKK (Agen) -&gt; Verifikasi Dokumen Digital (Regulator) -&gt; Valid? <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── YA  -&gt; Alokasi Dermaga &amp; Realisasi Bongkar Muat -&gt; Penerbitan Invoice &amp; SPB -&gt; [Selesai]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── TIDAK -&gt; Notifikasi Tolak &amp; Revisi Dokumen Kembali
+                    </div>
+
+                    <h3 id="section-sec23" class="text-xl font-bold text-slate-800 mt-6 mb-2">2.3 Platform Pengembangan Prototyping</h3>
+                    <p id="txt-platform" class="text-slate-600 leading-relaxed text-justify">Pengembangan prototipe awal memanfaatkan Google Sites yang diintegrasikan dengan Google Forms, Google Sheets, dan otomatisasi logika dari Google AppScript untuk menjamin efisiensi biaya pengembangan operasional tanpa kode rumit.</p>
+                </div>
+
+                <div id="section-bab3" class="prose max-w-none pt-6 border-t border-slate-100">
+                    <h2 class="text-2xl font-extrabold text-blue-900 border-b-2 border-blue-100 pb-2 mb-4">BAB III: PENUTUP</h2>
+                    <h3 id="section-sec31" class="text-xl font-bold text-slate-800 mt-6 mb-2">3.1 Kesimpulan</h3>
+                    <p id="txt-kesimpulan" class="text-slate-600 font-medium bg-blue-50 border-l-4 border-blue-700 p-4 rounded-r-lg text-justify">Penerapan Sistem Informasi Pelayanan Kapal merupakan solusi strategis untuk menggantikan proses pelayanan kapal yang saat ini masih bersifat semi-manual, tidak transparan, dan rentan terhadap keterlambatan (demurrage). Hasil akhirnya adalah peningkatan akurasi data, percepatan turnaround time, serta penurunan biaya logistik secara keseluruhan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="module-simulasi" class="hidden space-y-6">
+            <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-2">
+                <button onclick="switchRole('agen')" id="tab-agen" class="role-tab bg-blue-600 text-white font-semibold text-sm px-4 py-2 rounded-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie"></i> 1. Tampilan Agen Kapal (Input)
+                </button>
+                <button onclick="switchRole('petugas')" id="tab-petugas" class="role-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm px-4 py-2 rounded-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-building-shield"></i> 2. Dasbor Petugas (Validasi)
+                </button>
+                <button onclick="switchRole('manajemen')" id="tab-manajemen" class="role-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm px-4 py-2 rounded-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie"></i> 3. Dasbor Eksekutif (Statistik)
+                </button>
+            </div>
+
+            <div id="role-content-agen" class="role-panel bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex items-center gap-2 mb-4 border-b pb-2">
+                    <i class="fa-solid fa-file-invoice text-blue-600 text-xl"></i>
+                    <h3 class="text-lg font-bold text-slate-800">Formulir Digital Pemberitahuan Kedatangan Kapal (PKK)</h3>
+                </div>
+                <form id="form-pkk" onsubmit="submitFormPKK(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Nama Kapal</label>
+                        <input type="text" id="ship-name" required placeholder="Contoh: MV. COSCO SURABAYA" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Ukuran Kapal (Gross Tonnage / GT)</label>
+                        <input type="number" id="ship-gt" required placeholder="Contoh: 25000" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Jenis Muatan / Kargo</label>
+                        <select id="ship-cargo" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                            <option>Petikemas (Container)</option>
+                            <option>Curah Kering (Bulk Cargo)</option>
+                            <option>Liquid/Minyak</option>
+                            <option>General Cargo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Unggah Dokumen Manifes (Simulasi)</label>
+                        <input type="file" required class="w-full p-1.5 border rounded-lg text-xs bg-slate-50">
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg text-sm shadow transition">
+                            Kirim Permohonan Berthing via Portal Terintegrasi
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="role-content-petugas" class="role-panel hidden bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex justify-between items-center mb-4 border-b pb-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-amber-600 text-xl"></i>
+                        <h3 class="text-lg font-bold text-slate-800">Antrean Verifikasi Dokumen & Clearance Pelabuhan</h3>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">Simulasi Database Terpusat</span>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-500">
+                        <thead class="text-xs uppercase bg-slate-100 text-slate-700 font-bold">
+                            <tr>
+                                <th class="px-4 py-3">Nama Kapal</th>
+                                <th class="px-4 py-3">Spesifikasi (GT)</th>
+                                <th class="px-4 py-3">Kargo</th>
+                                <th class="px-4 py-3">Status Pengajuan</th>
+                                <th class="px-4 py-3 text-center">Tindakan Otoritas (AppScript)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-antrean">
+                            <tr class="border-b" id="row-1">
+                                <td class="px-4 py-4 font-semibold text-slate-900">MV. NYK TOKYO</td>
+                                <td class="px-4 py-4">32,400 GT</td>
+                                <td class="px-4 py-4">Petikemas</td>
+                                <td class="px-4 py-4"><span id="badge-1" class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-bold">Menunggu Verifikasi</span></td>
+                                <td class="px-4 py-4 flex gap-2 justify-center">
+                                    <button onclick="approveShip(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-1.5 px-3 rounded font-medium shadow-sm transition">Setujui & Tambat</button>
+                                    <button onclick="rejectShip(1)" class="bg-rose-600 hover:bg-rose-700 text-white text-xs py-1.5 px-3 rounded font-medium shadow-sm transition">Tolak Revisi</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="role-content-manajemen" class="role-panel hidden bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex items-center gap-2 mb-6 border-b pb-2">
+                    <i class="fa-solid fa-chart-line text-emerald-600 text-xl"></i>
+                    <h3 class="text-lg font-bold text-slate-800">Dasbor Eksekutif - Indikator Performa Pelabuhan (Real-Time)</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-900 text-white p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase text-slate-400 font-bold tracking-wider">Berth Occupancy Ratio (BOR)</p>
+                            <h4 class="text-3xl font-extrabold mt-1 text-emerald-400">62.4%</h4>
+                            <p class="text-[10px] text-slate-400 mt-2">Utilitas Alokasi Dermaga Efisien</p>
+                        </div>
+                        <i class="fa-solid fa-anchor text-4xl text-slate-700"></i>
+                    </div>
+                    <div class="bg-slate-900 text-white p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase text-slate-400 font-bold tracking-wider">Rata-rata Turnaround Time</p>
+                            <h4 class="text-3xl font-extrabold mt-1 text-blue-400">18.5 Jam</h4>
+                            <p class="text-[10px] text-emerald-400 mt-2"><i class="fa-solid fa-arrow-down"></i> Hemat 4 jam dibanding manual</p>
+                        </div>
+                        <i class="fa-solid fa-clock text-4xl text-slate-700"></i>
+                    </div>
+                    <div class="bg-slate-900 text-white p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase text-slate-400 font-bold tracking-wider">Total Pendapatan Jasa</p>
+                            <h4 class="text-3xl font-extrabold mt-1 text-amber-400">Rp 1.48 B</h4>
+                            <p class="text-[10px] text-slate-400 mt-2">Terhitung Otomatis E-Billing</p>
+                        </div>
+                        <i class="fa-solid fa-wallet text-4xl text-slate-700"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="editor-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-xl shadow-2xl border flex flex-col max-h-[90vh]">
+            <div class="p-4 border-b bg-slate-50 flex justify-between items-center">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-file-pen text-blue-900"></i> CMS Editor Materi Website</h3>
+                <button onclick="closeEditorModal()" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 flex-1">
+                <p class="text-xs text-slate-500">Anda dapat mengubah draf KTI Anda di bawah ini secara langsung untuk memperbarui tampilan halaman web.</p>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Materi 1.1 Identifikasi Masalah</label>
+                    <textarea id="edit-identifikasi" rows="3" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Materi 1.3 Dampak Tanpa Sistem</label>
+                    <textarea id="edit-dampak" rows="3" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Materi 3.1 Kesimpulan Laporan</label>
+                    <textarea id="edit-kesimpulan" rows="3" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:bg-white outline-none"></textarea>
+                </div>
+            </div>
+            <div class="p-4 border-t bg-slate-50 flex justify-end gap-2">
+                <button onclick="closeEditorModal()" class="px-4 py-2 border rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">Batal</button>
+                <button onclick="saveMateriContent()" class="px-4 py-2 bg-blue-900 text-white rounded-lg text-sm font-semibold hover:bg-blue-800 shadow transition">Simpan & Update Website</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-6 text-xs mt-12 border-t border-slate-800">
+        <p>&copy; 2026 Port-Sys Web Engine. Dikembangkan khusus untuk Simulasi Karya Tulis Jurusan Ketatalaksanaan dan Kepelabuhanan.</p>
+    </footer>
+
+    <script>
+        // Data internal untuk simulasi antrean kapal
+        let globalShipCount = 1;
+
+        // Fungsi Perpindahan Modul Utama (Materi KTI vs Aplikasi Simulasi)
+        function switchModule(moduleName) {
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('bg-blue-700', 'hover:bg-blue-800'));
+            document.getElementById('module-materi').classList.add('hidden');
+            document.getElementById('module-simulasi').classList.add('hidden');
+            
+            if (moduleName === 'materi') {
+                document.getElementById('module-materi').classList.remove('hidden');
+                document.getElementById('btn-materi').classList.add('bg-blue-700');
+            } else {
+                document.getElementById('module-simulasi').classList.remove('hidden');
+                document.getElementById('btn-simulasi').classList.add('bg-blue-700');
+            }
+        }
+
+        // Fungsi Membuka Editor Konten CMS
+        function openEditorModal() {
+            document.getElementById('edit-identifikasi').value = document.getElementById('txt-identifikasi').innerText;
+            document.getElementById('edit-dampak').value = document.getElementById('txt-dampak').innerText;
+            document.getElementById('edit-kesimpulan').value = document.getElementById('txt-kesimpulan').innerText;
+            document.getElementById('editor-modal').classList.remove('hidden');
+        }
+
+        function closeEditorModal() {
+            document.getElementById('editor-modal').classList.add('hidden');
+        }
+
+        // Fungsi Menyimpan Konten Hasil Edit CMS (Update DOM)
+        function saveMateriContent() {
+            document.getElementById('txt-identifikasi').innerText = document.getElementById('edit-identifikasi').value;
+            document.getElementById('txt-dampak').innerText = document.getElementById('edit-dampak').value;
+            document.getElementById('txt-kesimpulan').innerText = document.getElementById('edit-kesimpulan').value;
+            closeEditorModal();
+            alert('Sukses! Materi di dalam website berhasil diperbarui secara dinamis.');
+        }
+
+        // Navigasi Scroll otomatis ke sub-bab materi
+        function scrollToSection(id) {
+            const el = document.getElementById('section-' + id);
+            if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Fungsi Perpindahan Tab Hak Akses Peran (Role-Based Access)
+        function switchRole(roleName) {
+            document.querySelectorAll('.role-tab').forEach(tab => {
+                tab.classList.remove('bg-blue-600', 'text-white');
+                tab.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            document.querySelectorAll('.role-panel').forEach(panel => panel.classList.add('hidden'));
+
+            const activeTab = document.getElementById('tab-' + roleName);
+            const activePanel = document.getElementById('role-content-' + roleName);
+            
+            activeTab.classList.remove('bg-slate-100', 'text-slate-700');
+            activeTab.classList.add('bg-blue-600', 'text-white');
+            activePanel.classList.remove('hidden');
+        }
+
+        // Fitur Input: Simulasi Pengiriman Data PKK oleh Agen Kapal
+        function submitFormPKK(event) {
+            event.preventDefault();
+            globalShipCount++;
+            
+            const name = document.getElementById('ship-name').value.toUpperCase();
+            const gt = parseInt(document.getElementById('ship-gt').value).toLocaleString('id-ID');
+            const cargo = document.getElementById('ship-cargo').value;
+
+            // Membuat baris antrean baru ke dasbor petugas (Simulasi database)
+            const tableBody = document.getElementById('table-antrean');
+            const newRow = document.createElement('tr');
+            newRow.className = "border-b";
+            newRow.id = `row-${globalShipCount}`;
+            newRow.innerHTML = `
+                <td class="px-4 py-4 font-semibold text-slate-900">${name}</td>
+                <td class="px-4 py-4">${gt} GT</td>
+                <td class="px-4 py-4">${cargo}</td>
+                <td class="px-4 py-4"><span id="badge-${globalShipCount}" class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-bold">Menunggu Verifikasi</span></td>
+                <td class="px-4 py-4 flex gap-2 justify-center">
+                    <button onclick="approveShip(${globalShipCount})" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-1.5 px-3 rounded font-medium shadow-sm transition">Setujui & Tambat</button>
+                    <button onclick="rejectShip(${globalShipCount})" class="bg-rose-600 hover:bg-rose-700 text-white text-xs py-1.5 px-3 rounded font-medium shadow-sm transition">Tolak Revisi</button>
+                </td>
+            `;
+            
+            tableBody.appendChild(newRow);
+            document.getElementById('form-pkk').reset();
+            alert('Sukses! Data PKK terkirim secara otomatis ke antrean basis data sistem Petugas/Regulator.');
+            switchRole('petugas'); // Otomatis mengarahkan ke halaman petugas untuk diperiksa
+        }
+
+        // Fitur Proses & Logika: Simulasi Validasi Otomatis (Aksi Petugas)
+        function approveShip(id) {
+            const badge = document.getElementById(`badge-${id}`);
+            badge.className = "bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded font-bold";
+            badge.innerText = "Cleared / SPB Terbit";
+            alert('Logika AppScript Berjalan: Dokumen Dinyatakan Valid. Invoice E-Billing dan Surat Persetujuan Berlayar (SPB) PDF Berhasil Dikirim Otomatis ke Email Agen!');
+        }
+
+        function rejectShip(id) {
+            const badge = document.getElementById(`badge-${id}`);
+            badge.className = "bg-rose-100 text-rose-800 text-xs px-2 py-1 rounded font-bold";
+            badge.innerText = "Ditolak (Butuh Revisi)";
+            alert('Notifikasi Penolakan Berhasil Dikirim ke Agen Kapal beserta Catatan Evaluasi Dokumen.');
+        }
+    </script>
+</body>
+</html>
